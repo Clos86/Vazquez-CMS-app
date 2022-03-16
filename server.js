@@ -22,3 +22,15 @@
 // WHEN I choose to update an employee role
 // THEN I am prompted to select an employee to update and their new role and this information is updated in the database
 
+const express = require('express');
+
+const PORT = process.env.PORT || 3001;
+const app = express();
+
+// Express middleware
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});

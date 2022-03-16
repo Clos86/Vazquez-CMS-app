@@ -6,4 +6,3 @@ VALUES
     ('Sales'),
     ('Human Resource'),
     ('Purchase');
-
