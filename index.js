@@ -22,30 +22,76 @@
 // WHEN I choose to update an employee role
 // THEN I am prompted to select an employee to update and their new role and this information is updated in the database
 
-const express = require('express');
-const db = require('./db/connection');
-const apiRoutes = require('./routes/apiRoutes');
+const inquirer = require('inquirer');
 
-const PORT = process.env.PORT || 3001;
-const app = express();
+const questions = () => {
+return inquirer.prompt([
+  {
+    type: "list",
+    name: "menu",
+    message: "What would you like to do?",
+    choices: [
+      "View All Departments",
+      "View All Roles",
+      "View All Employees",      
+      "Add Department",
+      "Add Role",
+      "Add Employee",
+      "Update Employee Role",
+      "Update an employee",
+      "Exit",
+    ],
+  },
+{
+    type: "input",
+    name: "name",
+    message: "What is the department name?",
+  },
+  {
+    type: "input",
+    name: "title",
+    message: "What is the name of the role?",
+  },
+  {
+    type: "input",
+    name: "salary",
+    message: "What is the salary for this role?",
+  },
+//   {
+//     type: "list",
+//     name: "department_id",
+//     message: "Which department does the role belong to?",
+//     choices: departmentChoices,
+//   },
+  {
+    type: "input",
+    name: "first_name",
+    message: "What is the employee's first name?",
+  },
+  {
+    type: "input",
+    name: "last_name",
+    message: "What is the employee's last name?",
+  },
+//   {
+//     type: "list",
+//     name: "role_id",
+//     message: "What is the employee's role?",
+//     choices: roleChoices,
+//   },
+//   {
+//     type: "list",
+//     name: "manager_id",
+//     message: "Who is the employee's manager?",
+//     choices: managerChoices,
+//   },
+//   {
+//     type: "list",
+//     name: "id",
+//     message: "Which employee would you like update?",
+//     choices: employeeChoices,
+//   },
+]);
+};
 
-// Express middleware
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-
-// Use apiRoutes
-app.use('/api', apiRoutes);
-
-// Default response for any other request (Not Found)
-app.use((req, res) => {
-  res.status(404).end();
-});
-
-// Start server after DB connection
-db.connect(err => {
-  if (err) throw err;
-    console.log('Database connected.');
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
-});
+questions();
