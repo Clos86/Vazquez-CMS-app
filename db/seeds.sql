@@ -1,4 +1,4 @@
-INSERT INTO department (name)
+INSERT INTO departments (name)
 VALUES
     ('Marketing'),
     ('Operations'),
@@ -6,7 +6,7 @@ VALUES
     ('Sales'),
     ('Human Resource');
 
-INSERT INTO role (title, salary, department_id)
+INSERT INTO roles (title, salary, department_id)
 VALUES 
     ('Lead Marketing', 150000, 1), 
     ('Operations Manager', 100000, 2),
@@ -17,7 +17,7 @@ VALUES
     ('Human Resources Manager', 100000, 4), 
     ('Human Resources Assistant', 50000, 4);
 
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
+INSERT INTO employees (first_name, last_name, role_id, manager_id)
 VALUES 
     ('Julius', 'Ryan', 1, NULL), 
     ('Dangelo', 'Maddox', 2, NULL),
